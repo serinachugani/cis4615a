@@ -6,7 +6,7 @@ class GameEntry implements Comparable {
     this.value = value;
   }
 
-  public int compareTo(Object that) {
+  public int beats(Object that) {
     if (!(that instanceof GameEntry)) {
       throw new ClassCastException();
     }
