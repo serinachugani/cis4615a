@@ -1,6 +1,7 @@
-final class ControlledStop implements Runnable {
-  private boolean done = false;
 
+final class ControlledStop implements Runnable {
+  private volatile boolean done = false;
+  
   @Override public void run() {
     while (!done) {
       try {
@@ -9,9 +10,9 @@ final class ControlledStop implements Runnable {
       } catch(InterruptedException ie) {
         Thread.currentThread().interrupt(); // Reset interrupted status
       }
-    }
+    }   
   }
-
+ 
   public void shutdown() {
     done = true;
   }
